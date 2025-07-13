@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
+import { FaPlay, FaArrowDown } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
@@ -147,6 +148,12 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
+            {/* Elite Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-400 backdrop-blur-sm">
+              <FaPlay className="h-3 w-3" />
+              Future Network Elite
+            </div>
+
             <h1 className="special-font hero-heading text-white" data-translate-key="hero_title">
               {getTranslation("hero_title")}
             </h1>
@@ -159,12 +166,29 @@ const Hero = () => {
               {getTranslation("hero_description")}
             </p>
 
-            <Button
-              id="discover-services"
-              title={getTranslation("hero_cta")}
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 flex-center gap-2 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
-            />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Button
+                id="discover-services"
+                title={getTranslation("hero_cta")}
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 flex-center gap-2 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105"
+              />
+              
+              <button className="group flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-300">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
+                  <FaPlay className="h-3 w-3" />
+                </div>
+                <span>Voir la démo</span>
+              </button>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+              <div className="flex flex-col items-center gap-2 text-white/60">
+                <span className="text-xs uppercase tracking-wider">Scroll</span>
+                <FaArrowDown className="h-4 w-4" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

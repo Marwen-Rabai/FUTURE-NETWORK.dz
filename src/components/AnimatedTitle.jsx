@@ -13,8 +13,8 @@ const AnimatedTitle = ({ title, containerClass }) => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "100 bottom",
-          end: "center bottom",
+          start: "top 80%",
+          end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
       });
@@ -24,8 +24,9 @@ const AnimatedTitle = ({ title, containerClass }) => {
         {
           opacity: 1,
           transform: "translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg)",
-          ease: "power2.inOut",
-          stagger: 0.02,
+          ease: "back.out(1.7)",
+          stagger: 0.05,
+          duration: 0.8,
         },
         0
       );

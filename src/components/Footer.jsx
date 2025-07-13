@@ -3,6 +3,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { getTranslation } from "../content";
+import DeveloperSection from "./DeveloperSection";
+import PremiumLogo from "./PremiumLogo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,18 +60,22 @@ const Footer = () => {
       }
     );
 
-    // Animate social icons
+    // Animate social icons with premium effect
     gsap.fromTo(".social-icon", 
       {
         scale: 0,
-        rotation: -180
+        rotation: -180,
+        opacity: 0,
+        y: 30
       },
       {
         scale: 1,
         rotation: 0,
-        duration: 0.6,
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
         ease: "back.out(1.7)",
-        stagger: 0.1,
+        stagger: 0.15,
         scrollTrigger: {
           trigger: ".social-icons",
           start: "top 80%",
@@ -81,17 +87,13 @@ const Footer = () => {
   });
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
+    <footer className="bg-gradient-to-br from-black via-black to-black text-white">
       <div className="container mx-auto px-6 py-16">
         <div className="footer-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <img 
-                src="/img/Future Network Official Logo (Blue minimalist Smart house wifi Network Energy  Security logo)..png" 
-                alt="Future Network Logo" 
-                className="w-12 h-12 object-contain" 
-              />
+              <PremiumLogo className="w-14 h-14" showText={false} />
               <div>
                 <h3 className="text-2xl font-bold text-white">Future Network</h3>
                 <p className="text-green-400 text-sm font-medium">The Network of Tomorrow</p>
@@ -103,8 +105,8 @@ const Footer = () => {
             </p>
             
             {/* Social Links */}
-            <div className="social-icons flex gap-4">
-              <span className="text-sm text-gray-400 mr-4" data-translate-key="footer_follow">
+            <div className="social-icons flex items-center gap-6">
+              <span className="text-sm text-gray-400 font-medium" data-translate-key="footer_follow">
                 {getTranslation("footer_follow")}:
               </span>
               {socialLinks.map((link, index) => (
@@ -113,10 +115,14 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center hover:from-green-600 hover:to-blue-600 transition-all duration-300 hover:scale-110"
+                  className="social-icon group relative w-12 h-12 bg-gradient-to-br from-blue-600/20 to-green-600/20 rounded-2xl flex items-center justify-center border border-white/10 backdrop-blur-sm transition-all duration-500 hover:scale-110 hover:border-blue-500/30 hover:bg-gradient-to-br hover:from-blue-600/30 hover:to-green-600/30 hover:shadow-2xl hover:shadow-blue-500/20"
                   title={link.name}
                 >
-                  {link.icon}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/0 to-green-600/0 group-hover:from-blue-600/20 group-hover:to-green-600/20 transition-all duration-500" />
+                  <div className="relative z-10 text-white group-hover:text-blue-300 transition-all duration-300 group-hover:scale-110">
+                    {link.icon}
+                  </div>
+                  <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-blue-500/20 transition-all duration-500" />
                 </a>
               ))}
             </div>
@@ -168,6 +174,9 @@ const Footer = () => {
           </p>
         </div>
       </div>
+      
+      {/* Developer Section */}
+      <DeveloperSection />
     </footer>
   );
 };

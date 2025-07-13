@@ -4,7 +4,6 @@ import Services from "./components/Services";
 import Marquee from "./components/Marquee";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import DeveloperSection from "./components/DeveloperSection";
 import Footer from "./components/Footer";
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
       <Marquee />
       <About />
       <Contact />
-      <DeveloperSection />
       <Footer />
     </main>
   );

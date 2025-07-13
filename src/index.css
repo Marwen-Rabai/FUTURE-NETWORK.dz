@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +13,7 @@
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #0F0F0F;
+  background-color: #000000;
   font-family: "Inter", sans-serif;
   color: #EAEAEA;
 }
@@ -49,6 +54,107 @@ body.lang-ar .hero-heading {
   }
 }
 
+/* Marquee Animations */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 40s linear infinite;
+  gap: 2rem;
+}
+
+.marquee-reverse {
+  animation: marquee-reverse 40s linear infinite;
+}
+
+.marquee-item {
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.marquee-item:hover {
+  transform: scale(1.05);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Elite Design Enhancements */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #00d4aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #3b82f6, #00d4aa);
+  padding: 1px;
+  border-radius: 0.5rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #3b82f6, #00d4aa);
+  border-radius: inherit;
+  padding: 1px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #00d4aa);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2563eb, #00b894);
+}
+
 /* Future Network Brand Colors */
 :root {
   --fn-blue-primary: #2563eb;
@@ -57,6 +163,13 @@ body.lang-ar .hero-heading {
   --fn-dark-bg: #0F0F0F;
   --fn-light-text: #EAEAEA;
   --fn-dark-text: #1A1A1A;
+  
+  /* Elite Font Variables */
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
 }
 
 @layer base {
@@ -89,6 +202,27 @@ body.lang-ar .hero-heading {
 @layer utilities {
   .border-hsla {
     @apply border border-white/20;
+  }
+
+  /* Elite Font Classes */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .font-ui {
+    font-family: var(--font-ui);
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
   }
 
   .nav-hover-btn {
@@ -125,21 +259,19 @@ body.lang-ar .hero-heading {
 
   .hero-heading {
     @apply uppercase font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
-    font-family: "Sora", sans-serif;
+    font-family: var(--font-display);
     color: var(--fn-blue-primary);
-  }
-
-  .about-subtext {
-    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+    letter-spacing: -0.02em;
   }
 
   .about-image {
-    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+    @apply absolute left-1/2 top-1/2 h-[60vh] w-96 origin-center -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl md:w-[30vw] transform-gpu;
   }
 
   .animated-title {
     @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
-    font-family: "Sora", sans-serif;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 
   .animated-word {
@@ -147,6 +279,81 @@ body.lang-ar .hero-heading {
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
+  }
+
+  /* Enhanced contact animations */
+  .contact-card-hover {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .contact-card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+  }
+
+  .floating-bg {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Premium Social Icons */
+  .social-icon {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .social-icon:hover::before {
+    left: 100%;
+  }
+
+  .social-icon:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  /* Premium Logo Animations */
+  @keyframes electric-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.4);
+    }
+  }
+
+  @keyframes neon-glow {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 10px #00d4ff);
+    }
+    50% {
+      filter: brightness(1.3) drop-shadow(0 0 20px #00d4ff) drop-shadow(0 0 30px #00d4ff);
+    }
+  }
+
+  .premium-logo {
+    animation: electric-pulse 3s ease-in-out infinite;
+  }
+
+  .premium-logo img {
+    animation: neon-glow 2s ease-in-out infinite;
   }
 
   .bento-tilt_1 {
