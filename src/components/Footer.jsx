@@ -120,7 +120,7 @@ const Footer = () => {
                 >
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/0 to-green-600/0 group-hover:from-blue-600/20 group-hover:to-green-600/20 transition-all duration-500" />
                   <div className="relative z-10 text-white group-hover:text-blue-300 transition-all duration-300 group-hover:scale-110">
-                    {link.icon}
+                  {link.icon}
                   </div>
                   <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-blue-500/20 transition-all duration-500" />
                 </a>

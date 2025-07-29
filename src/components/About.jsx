@@ -58,7 +58,7 @@ const About = () => {
       "-=0.5" // Start slightly before the previous animation ends
     );
 
-    // Third: Animate the clip path image (starts after content is fully visible)
+    // Third: Animate the clip path image with improved mobile scrolling
     masterTimeline.to(".mask-clip-path", {
       width: "100vw",
       height: "100vh",
@@ -66,10 +66,34 @@ const About = () => {
       top: "0%",
       left: "0%",
       transform: "translate(0%, 0%)",
-      opacity: 0.6,
-      duration: 1.2,
+      opacity: 0.8,
+      duration: 1.5,
       ease: "power2.inOut",
-    }, "+=0.3"); // Start 0.3 seconds after the previous animation
+      onUpdate: function() {
+        // Smooth mobile scrolling optimization
+        if (window.innerWidth <= 768) {
+          gsap.set(".mask-clip-path img", {
+            transform: "scale(1.1)",
+            filter: "brightness(1.2) contrast(1.1)"
+          });
+        }
+      }
+    }, "+=0.2"); // Start slightly earlier for better flow
+
+    // Enhanced parallax effect for the image
+    gsap.to(".mask-clip-path img", {
+      scale: 1.15,
+      y: "-10%",
+      duration: 2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+        invalidateOnRefresh: true
+      }
+    });
   });
 
   return (
@@ -149,7 +173,7 @@ const About = () => {
         <div className="mask-clip-path absolute left-1/2 top-1/2 h-[60vh] w-96 origin-center -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl md:w-[30vw] transform-gpu">
           <img
             src="img/about.webp"
-            alt="Background"
+            alt="Future Network - Advanced Technology"
             className="h-full w-full object-cover"
           />
         </div>

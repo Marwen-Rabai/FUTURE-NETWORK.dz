@@ -1,5 +1,4 @@
-import React from "react";
-import { FaHeart, FaCode, FaRocket } from "react-icons/fa";
+import { FaHeart, FaCode } from "react-icons/fa";
 
 const DeveloperSection = () => {
   return (
@@ -21,20 +20,20 @@ const DeveloperSection = () => {
               <FaCode className="h-3 w-3 text-blue-400 group-hover:text-green-400 transition-colors duration-300" />
               <span className="text-xs font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
                 Engineered with
-              </span>
+        </span>
               <FaHeart className="h-3 w-3 text-red-400 animate-pulse" />
               <span className="text-xs font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
-                by
-              </span>
-              <a
-                href="https://marwenrabai.strikingly.com"
-                target="_blank"
-                rel="noopener noreferrer"
+          by
+        </span>
+        <a
+          href="https://marwenrabai.strikingly.com"
+          target="_blank"
+          rel="noopener noreferrer"
                 className="text-xs font-bold text-blue-400 hover:text-green-400 transition-colors duration-300 hover:scale-105"
-              >
-                Marwen Rabai
-              </a>
-            </div>
+        >
+          Marwen Rabai
+        </a>
+      </div>
           </div>
         </div>
       </div>

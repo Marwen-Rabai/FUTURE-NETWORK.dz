@@ -1,7 +1,8 @@
 import AnimatedTitle from "./AnimatedTitle";
 import Button from "./Button";
+import ContactForm3D from "./ContactForm3D";
 import { getTranslation } from "../content";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
@@ -26,6 +27,7 @@ const ImageClipBox = ({ src, clipClass }) => (
 );
 
 const Contact = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const contactRef = useRef(null);
   const cardsRef = useRef(null);
   const ctaRef = useRef(null);
@@ -129,27 +131,27 @@ const Contact = () => {
         <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-black/80 via-black/80 to-black/80 backdrop-blur-xl py-24 text-blue-50 sm:overflow-hidden shadow-2xl shadow-blue-500/10">
           
           {/* Elite Background Images */}
-          <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
-            <ImageClipBox
-              src="/img/contact-1.webp"
-              clipClass="contact-clip-path-1"
-            />
-            <ImageClipBox
-              src="/img/contact-2.webp"
-              clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
-            />
-          </div>
+        <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
+          <ImageClipBox
+            src="/img/contact-1.webp"
+            clipClass="contact-clip-path-1"
+          />
+          <ImageClipBox
+            src="/img/contact-2.webp"
+            clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
+          />
+        </div>
 
-          <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
-            <ImageClipBox
-              src="/img/swordman-partial.webp"
-              clipClass="absolute md:scale-125"
-            />
-            <ImageClipBox
-              src="/img/swordman.webp"
-              clipClass="sword-man-clip-path md:scale-125"
-            />
-          </div>
+        <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
+          <ImageClipBox
+            src="/img/swordman-partial.webp"
+            clipClass="absolute md:scale-125"
+          />
+          <ImageClipBox
+            src="/img/swordman.webp"
+            clipClass="sword-man-clip-path md:scale-125"
+          />
+        </div>
 
           <div className="flex flex-col items-center text-center relative z-10">
             {/* Ultra Elite Badge */}
@@ -160,17 +162,17 @@ const Contact = () => {
             </div>
 
             <p className="mb-10 text-sm uppercase text-green-400 font-bold tracking-widest" data-translate-key="contact_subtitle">
-              {getTranslation("contact_subtitle")}
-            </p>
+            {getTranslation("contact_subtitle")}
+          </p>
 
-            <AnimatedTitle
-              title="Contact<b>e</b>z-nous"
-              className="special-font !md:text-[6.2rem] w-full !text-5xl !font-black !leading-[.9] !text-white"
-            />
+          <AnimatedTitle
+            title="Contact<b>e</b>z-nous"
+            className="special-font !md:text-[6.2rem] w-full !text-5xl !font-black !leading-[.9] !text-white"
+          />
 
             <p className="mt-8 mb-12 text-gray-300 max-w-3xl leading-relaxed text-lg" data-translate-key="contact_description">
-              {getTranslation("contact_description")}
-            </p>
+            {getTranslation("contact_description")}
+          </p>
 
             {/* Ultra Elite Contact Info Cards */}
             <div ref={cardsRef} className="mb-16 grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-5xl mx-auto">
@@ -216,8 +218,9 @@ const Contact = () => {
 
             {/* Ultra Elite CTA Section */}
             <div ref={ctaRef} className="flex flex-col gap-6 sm:flex-row sm:items-center">
-              <Button 
-                title={getTranslation("contact_cta")} 
+          <Button 
+            title={getTranslation("contact_cta")} 
+            onClick={() => setIsFormOpen(true)}
                 containerClass="cursor-pointer bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 hover:from-green-600 hover:via-blue-600 hover:to-purple-600 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 text-lg transform hover:-translate-y-1" 
               />
               
@@ -248,6 +251,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      
+      {/* 3D Contact Form Modal */}
+      <ContactForm3D isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </div>
   );
 };

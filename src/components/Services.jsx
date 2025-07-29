@@ -223,8 +223,11 @@ const Services = () => {
             Services Elite
           </div>
           
-          <h2 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            {getTranslation("services_title")}
+          <h2 className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl relative">
+            <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent font-display">
+              {getTranslation("services_title")}
+            </span>
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-lg opacity-20 blur-lg"></div>
           </h2>
           
           <p className="mx-auto max-w-2xl text-lg text-gray-400">

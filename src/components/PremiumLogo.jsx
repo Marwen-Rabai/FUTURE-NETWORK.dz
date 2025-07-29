@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const PremiumLogo = ({ className = "w-10 h-10", showText = false }) => {
@@ -169,15 +169,16 @@ const PremiumLogo = ({ className = "w-10 h-10", showText = false }) => {
 
   return (
     <div className={`relative ${className} cursor-pointer`} ref={containerRef}>
-      {/* Enhanced Electric Field Background */}
+      {/* Premium Background with Advanced Gradient */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 rounded-lg opacity-30 blur-xs" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/25 via-cyan-400/20 to-blue-600/25 rounded-lg blur-xl" />
       
-      {/* Premium Square Frame */}
+      {/* Premium Elite Frame */}
       <div 
         ref={frameRef}
         className="relative w-full h-full rounded-lg border-2 border-transparent bg-gradient-to-br from-blue-400 via-cyan-300 to-blue-600 p-[2px] overflow-hidden"
         style={{
-          boxShadow: "0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(0, 212, 255, 0.2)"
+          boxShadow: "0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.3)"
         }}
       >
         {/* Inner Frame - Clean for Image */}

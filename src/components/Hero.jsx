@@ -87,13 +87,27 @@ const Hero = () => {
   return (
     <div id="home" className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
+        <div className="premium-loader">
+          <div className="loader-container">
+            <div className="circuit-loader">
+              <div className="circuit-ring"></div>
+              <div className="circuit-ring"></div>
+              <div className="circuit-ring"></div>
+            </div>
+            <div className="loader-logo">
+              <div className="loader-logo-inner">
+                <img 
+                  src="/img/Future Network Official Logo (Blue minimalist Smart house wifi Network Energy  Security logo)..png" 
+                  alt="Future Network" 
+                  className="w-full h-full object-contain p-2"
+                  style={{
+                    filter: "brightness(1.2) contrast(1.1)"
+                  }}
+                />
+              </div>
+            </div>
           </div>
+          <div className="loader-text">FUTURE NETWORK</div>
         </div>
       )}
 
@@ -142,7 +156,7 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40">
+        <h1 className="special-font hero-heading absolute bottom-20 right-5 z-40 text-blue-400/20 text-6xl sm:text-7xl md:text-8xl">
           NET<b>W</b>ORK
         </h1>
 
@@ -154,7 +168,7 @@ const Hero = () => {
               Future Network Elite
             </div>
 
-            <h1 className="special-font hero-heading text-white" data-translate-key="hero_title">
+            <h1 className="hero-main-title text-white leading-tight relative z-50 max-w-4xl mb-6" data-translate-key="hero_title">
               {getTranslation("hero_title")}
             </h1>
 
@@ -167,14 +181,22 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button
-                id="discover-services"
-                title={getTranslation("hero_cta")}
-                leftIcon={<TiLocationArrow />}
+            <Button
+              id="discover-services"
+              title={getTranslation("hero_cta")}
+              leftIcon={<TiLocationArrow />}
                 containerClass="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 flex-center gap-2 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105"
-              />
+            />
               
-              <button className="group flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-300">
+              <button 
+                onClick={() => {
+                  const demoSection = document.getElementById('services');
+                  if (demoSection) {
+                    demoSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="group flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+              >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
                   <FaPlay className="h-3 w-3" />
                 </div>
@@ -193,7 +215,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-gray-800">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-blue-400/10 text-6xl sm:text-7xl md:text-8xl z-30">
         FUT<b>U</b>RE
       </h1>
     </div>
