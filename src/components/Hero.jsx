@@ -156,9 +156,17 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-20 right-5 z-40 text-blue-400/20 text-6xl sm:text-7xl md:text-8xl">
-          NET<b>W</b>ORK
-        </h1>
+        {/* Premium Background Brand Text - Non-overlapping */}
+        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+          {/* FUTURE - Bottom Left */}
+          <h1 className="brand-text-bg absolute bottom-8 left-8 text-gray-800/20 select-none">
+            FUT<b>U</b>RE
+          </h1>
+          {/* NETWORK - Top Right */}  
+          <h1 className="brand-text-bg absolute top-20 right-8 text-gray-800/15 select-none">
+            NET<b>W</b>ORK
+          </h1>
+        </div>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
@@ -214,10 +222,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-blue-400/10 text-6xl sm:text-7xl md:text-8xl z-30">
-        FUT<b>U</b>RE
-      </h1>
     </div>
   );
 };
