@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { FaUser, FaEnvelope, FaPhone, FaMessage, FaPaperPlane, FaCheckCircle } from 'react-icons/fa6';
-import { FaBolt } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaMessage, FaPaperPlane } from 'react-icons/fa6';
+import { FaBolt, FaCheckCircle } from 'react-icons/fa';
 
 const ContactForm3D = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
